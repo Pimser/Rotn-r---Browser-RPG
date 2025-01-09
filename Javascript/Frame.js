@@ -1,6 +1,7 @@
 // Elements
 const output = document.getElementById("output");
 const choicesContainer = document.getElementById("choices");
+const inventoryList = document.getElementById("inventory-list");
 
 // Game state
 let GameState = {
@@ -36,6 +37,16 @@ function updateGame(newText, newChoices) {
     });
 }
 
+// Update the inventory display
+function updateInventory() {
+    inventoryList.innerHTML = ""; // Clear the current inventory list
+    GameState.inventory.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        inventoryList.appendChild(li);
+    });
+}
+
 // Location handler
 function start() {
     GameState.location = "Start";
@@ -52,6 +63,7 @@ function start() {
 
 function takeCompass() {
     GameState.inventory.push("Compass"); // Add compass to inventory
+    updateInventory();
     updateGame(
         "You chose to grab the compass.",
         [
@@ -62,6 +74,7 @@ function takeCompass() {
 
 function takeMap() {
     GameState.inventory.push("Map"); // Add map to inventory
+    updateInventory();
     updateGame(
         "You chose to grab the map.",
         [

@@ -40,3 +40,26 @@ body {
   choices {
     font-family: papyrus;
   }
+
+  #inventory-container {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    width: 200px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Styling the inventory list */
+#inventory-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#inventory-list li {
+    margin-bottom: 10px;
+    font-size: 12px;
+}
