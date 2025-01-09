@@ -1,0 +1,27 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #282c34;
+    color: white;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  #game {
+    display: flex;
+    max-width: 600px;
+    margin: auto;
+    background: #333;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px black;
+    align-items: center;
+    justify-content: center;
+    object-fit: contain;
+    flex-direction: column;
+  }
+  
+  input, button {
+    padding: 10px;
+    font-size: 16px;
+    margin-top: 10px;
+  }
