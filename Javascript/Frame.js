@@ -53,21 +53,22 @@ function start() {
     GameState.inventory = []; // Reset inventory
 
     updateGame(
-        "Welcome to Rotnîr traveller! Choose wisely.",
+        "Welcome to Rotnîr traveller! Where shall your adventures start?",
         [
-            { text: "Take the compass", action: () => takeCompass() },
-            { text: "Take map", action: () => takeMap() }
+            {text: "An unknown trader ship to the south", action: () => ShipStart()},
+            {text: "A wagon far off to the east", action: () => WagonStart()}
         ]
     );
 }
 
-function takeCompass() {
-    GameState.inventory.push("Compass"); // Add compass to inventory
-    updateInventory();
+function ShipStart() {
+    // GameState.inventory.push("Compass"); // Add compass to inventory
+    // updateInventory();
     updateGame(
-        "You chose to grab the compass.",
+        "You find yourself on a docked trader ship, no clue where you are. You see a old map on a barrel",
         [
-            { text: "Go back to the start", action: () => start() }
+            { text: "Take the map", action: () => takeMap() },
+            { text: "Leave it be, and look around", action: () => lookAroundShip()}
         ]
     );
 }
@@ -76,9 +77,10 @@ function takeMap() {
     GameState.inventory.push("Map"); // Add map to inventory
     updateInventory();
     updateGame(
-        "You chose to grab the map.",
+        "You see the terrain and mountains displayed on the maps surface, but pieces are missing.",
         [
-            { text: "Go back to the start", action: () => start() }
+            { text: "Ask for guidance", action: () => MapGuidance() },
+            {text: "Follow the maps lead", action: () => MapsLead()}
         ]
     );
 }
