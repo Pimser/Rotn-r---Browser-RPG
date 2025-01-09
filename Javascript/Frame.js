@@ -42,7 +42,7 @@ function start() {
     GameState.inventory = []; // Reset inventory
 
     updateGame(
-        "Welcome to Rotnir traveller! Choose wisely.",
+        "Welcome to Rotnîr traveller! Choose wisely.",
         [
             { text: "Take the compass", action: () => takeCompass() },
             { text: "Take map", action: () => takeMap() }

@@ -4,6 +4,12 @@ body {
     color: white;
     text-align: center;
     padding: 20px;
+    overflow-y: hidden;
+  }
+
+  html {
+    height: 100%;
+    overflow: hidden;
   }
   
   #game {
@@ -24,4 +30,13 @@ body {
     padding: 10px;
     font-size: 16px;
     margin-top: 10px;
+  }
+
+  p {
+    font-family: papyrus;
+    font-size: 20px;
+  }
+
+  choices {
+    font-family: papyrus;
   }
