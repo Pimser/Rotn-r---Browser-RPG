@@ -9,6 +9,9 @@ let GameState = {
     inventory: []
 };
 
+//items of value
+const gold = 0;
+
 // Typewriter Effect
 function typeWriter(text, i, callback) {
     if (i < text.length) {
@@ -31,7 +34,14 @@ function updateGame(newText, newChoices) {
         newChoices.forEach(choice => {
             const button = document.createElement("button");
             button.textContent = choice.text; // Button label
-            button.addEventListener("click", choice.action); // Action on click
+            button.addEventListener("click", () => {
+                //disable all buttons after choice is made
+                const allButtons = choicesContainer.querySelectorAll("button");
+                allButtons.forEach(btn => (btn.disabled = true));
+
+                //execute the associated action
+                choice.action();
+            }); // Action on click
             choicesContainer.appendChild(button);
         });
     });
@@ -51,6 +61,7 @@ function updateInventory() {
 function start() {
     GameState.location = "Start";
     GameState.inventory = []; // Reset inventory
+    updateInventory();
 
     updateGame(
         "Welcome to Rotnîr traveller! Where shall your adventures start?",
@@ -83,6 +94,36 @@ function takeMap() {
             {text: "Follow the maps lead", action: () => MapsLead()}
         ]
     );
+}
+
+function WagonStart() {
+    updateGame(
+        "You find yourself on a wagon on the east border og Eynir. The wagon makes a stop at the entrance of an unknown village",
+        [
+            {text: "Follow the path into the village", action: () => WagonStartVillage()},
+            {text: "Stay in the wagon", action: () => WagonStartStay()}
+        ]
+    )
+}
+
+function WagonStartStay() {
+    updateGame(
+        "You stay in the wagon until an old man approaches you. *Take this gold*",
+        [
+            {text: "take gold from the old man", action: () => takeGold()}
+        ]
+    )
+}
+
+function takeGold() {
+    GameState.inventory.push("Gold: ", gold + 100);
+    updateInventory();
+    updateGame(
+        "You received 100 gold from the man",
+        [
+            {text: "Back to start", action: () => start()}
+        ]
+    )
 }
 
 // Start the game when the page loads
